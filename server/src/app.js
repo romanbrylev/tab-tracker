@@ -5,13 +5,13 @@ const morgan = require("morgan");
 
 const app = express();
 
-app.use(morgan("combine"));
+app.use(morgan("combined"));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/status", (req, res) => {
+app.post("/register", (req, res) => {
   res.send({
-    messages: "hello world!"
+    messages: `Ваш аккаунт ${req.body.email}, ${req.body.password} зарегистрирован!`
   });
 });
 app.listen(process.env.PORT || 8081);
